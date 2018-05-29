@@ -7,3 +7,4 @@
     <!-- Main styles for this application-->
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
     <link href="{{asset('css/pace.min.css')}}" rel="stylesheet">
+    <link  href="{{mix('css/app.css')}}" rel="stylesheet">

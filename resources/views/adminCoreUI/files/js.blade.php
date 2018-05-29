@@ -7,3 +7,7 @@
     <!-- Plugins and scripts required by this view-->
     <script src="{{asset('js/Chart.min.js')}}"></script>
     <script src="{{asset('js/custom-tooltips.min.js')}}"></script>
+
+    <script src="{{mix('js/Vue-App.js')}}"></script>
+    <script src="{{mix('js/app.js')}}"></script>
+
