@@ -246,6 +246,18 @@ blockquote .frase{
 }
 
 
+ .opc {
+    color: #fff;
+    border-left: 0;
+    margin-left: 35px;
+    padding: 0.2rem 1rem !important;
+
+}
+
+ .active{
+  background-color: #20A8D8 !important;
+}
+
 /* The container-chk */
 .container-chk {
     display: block;

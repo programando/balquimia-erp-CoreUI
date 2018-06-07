@@ -1,18 +1,27 @@
-require('./bootstrap');
+
+
+ require('./bootstrap');
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 import Vue       from 'vue';
-Vue.config.devtools = true;
+import router    from './routes';
 
-Vue.component('ejemplo', require('./components/ExampleComponent'));
-Vue.component('ejemplo2', require('./components/otro'));
+//Vue.component('sublineas', require('./components/partials/SubLineas'));
 
 const VueApp = new Vue({
+
     el: '#VueApp',
-    data : {
-        IdMenu : 0,
-      }
+    router
+
 });
+
+
+
+//https://github.com/asika32764/vue2-animate
+//require('vue2-animate/dist/vue2-animate.min.css')
+
+
+

@@ -3,9 +3,8 @@
     <ul class="nav">
 
       <li class="nav-item">
-        <a class="nav-link" href="main.html">
-          <i class="nav-icon icon-speedometer"></i> Inicio
-        </a>
+
+        <router-link :to="{name:'inicio'}" class="nav-link"> <i class="nav-icon icon-speedometer"></i> Inicio</router-link>
       </li>
 
       <li class="nav-item nav-dropdown">
@@ -13,33 +12,21 @@
           <i class="nav-icon icon-puzzle"></i> Configuración</a>
           <ul class="nav-dropdown-items">
             <li class="nav-item">
-              <a class="nav-link" href="{{route('mstro.lineas.show.form')}}" >
-                <i class="nav-icon icon-puzzle"></i> Líneas</a>
+              <a class="nav-link opc" href="#" >
+                 Líneas</a>
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="{{route('mstro.cargos.show.form')}}" >
-                  <i class="nav-icon icon-puzzle"></i> SubLíneas</a>
+                <router-link :to="{name:'cargos'}" class="nav-link opc">
+                      Cargos
+                </router-link>
                 </li>
+
               </ul>
             </li>
 
-            <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle collapsed" href="#">
-                <i class="nav-icon icon-puzzle"></i> Contabilidad</a>
-                <ul class="nav-dropdown-items">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{route('mstro.cargos.show.form')}}" >
-                      <i class="nav-icon icon-puzzle"></i> Opc1</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="{{route('mstro.lineas.show.form')}}" >
-                        <i class="nav-icon icon-puzzle"></i> Opc1</a>
-                      </li>
-                    </ul>
-                  </li>
-
-                </ul>
-      </nav>
+    </ul>
+  </nav>
       <button class="sidebar-minimizer brand-minimizer" type="button"></button>
 </div>
 

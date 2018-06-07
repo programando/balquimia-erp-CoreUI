@@ -14,10 +14,12 @@
                   {{-- @include('adminCoreUI.central-content.breadcrumb') --}}
               <div class="container-fluid" style="margin-top: 20px;">
                 <div class="animated fadeIn">
-                  {{-- Contenido principal --}}
-                  <div class="row">
-                      @yield('content')
-                  </div>
+                  {{-- Contenido principal     --}}
+
+                    <router-view :key="$route.fullPath" >
+                        @yield('content')
+                    </router-view>
+
                 </div>
               </div>
             </main>
