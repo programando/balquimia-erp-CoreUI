@@ -18,7 +18,9 @@ class MstroCargosController extends Controller
     public function index() {
 
         $Cargos =  Cargos::orderBy('nom_cargo')->where('id_cargo','>','0')->paginate(10);
-         return [
+        return $Cargos ;
+
+        /* return [
             'pagination' => [
                 'total'        => $Cargos->total(),
                 'current_page' => $Cargos->currentPage(),
@@ -29,6 +31,7 @@ class MstroCargosController extends Controller
             ],
             'Registros' => $Cargos
         ];
+        */
 
     }
 

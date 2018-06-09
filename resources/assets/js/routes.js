@@ -5,14 +5,13 @@ Vue.use(Router);
 Vue.config.devtools = true;
 
 
-
 export default new Router({
    routes : [
-        { component : require('./components/maestros/Dashboard'),
+        { component : require('./views/maestros/Dashboard'),
           name      : 'inicio',
           path      : '/'     },
 
-        { component : require('./components/maestros/Cargos'),
+        { component : require('./views/maestros/Cargos'),
           name      : 'cargos',
           path      : '/cargos'     },
 

@@ -9,7 +9,8 @@
 import Vue       from 'vue';
 import router    from './routes';
 
-//Vue.component('sublineas', require('./components/partials/SubLineas'));
+Vue.component('pagination-links', require( './components/PaginationLinks' ));
+
 
 const VueApp = new Vue({
 

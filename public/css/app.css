@@ -322,3 +322,26 @@ blockquote .frase{
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+  .modal-content{
+       width: 100% !important;
+        position: absolute !important;
+  }
+
+  .Modal-Show{
+      display: list-item !important;
+      opacity: 1 !important;
+      position: absolute !important;
+      background-color: #3c29297a !important;
+  }
+.Modal-Show-Delete{
+  display: list-item !important;
+  opacity: 1 !important;
+  position: absolute !important;
+  background-color: #3c29297a !important;
+}
+ td {
+    padding: 0.3rem !important;
+    vertical-align: middle !important;
+
+}
