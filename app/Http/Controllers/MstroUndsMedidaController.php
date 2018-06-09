@@ -17,18 +17,7 @@ class MstroUndsMedidaController extends Controller
 
     public function index() {
         $UnidadesMedida =  UnidadesMedida::orderBy('nom_med')->where('id_med','>','0')->paginate(10);
-         return [
-            'pagination' => [
-                'total'        => $UnidadesMedida->total(),
-                'current_page' => $UnidadesMedida->currentPage(),
-                'per_page'     => $UnidadesMedida->perPage(),
-                'last_page'    => $UnidadesMedida->lastPage(),
-                'from'         => $UnidadesMedida->firstItem(),
-                'to'           => $UnidadesMedida->lastItem(),
-            ],
-            'Registros' => $UnidadesMedida
-        ];
-
+        return $UnidadesMedida;
     }
 
 

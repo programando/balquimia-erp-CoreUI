@@ -15,10 +15,11 @@ export default new Router({
           name      : 'cargos',
           path      : '/cargos'     },
 
-        /*{ component : require('./components/maestros/UndMedidas') ,
-          name      : 'und-medidas',
-          path      : '/und-medida'     },
+        { component : require('./views/maestros/UndsMedida') ,
+          name      : 'medidas',
+          path      : '/medidas'     },
 
+/*
         { component : require('./components/maestros/Lineas')  ,
           name      : 'lineas',
           path      : '/lineas'     },

@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="card">
-          <div class="card-header"> <i class="fa fa-align-justify"></i> Cargos
+          <div class="card-header"><i class="fa fa-align-justify"></i> Unidades de Medida
             <button type="button" class="btn btn-sm btn-primary pull-right"   @click="ModalOpen('Nuevo')"> Crear Nuevo Registro</button>
           </div>
           <div class="card-body">
@@ -16,10 +16,10 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="Registro in DatosTabla" :key="Registro.id_cargo">
-                  <td v-text="Registro.nom_cargo"></td>
+                <tr v-for="Registro in DatosTabla" :key="Registro.id_med">
+                  <td v-text="Registro.nom_med"></td>
                   <td>
-                    <span v-if="Registro.inactivo" class="badge badge-danger">Inactivo</span>
+                    <span v-if="Registro.inactivo" class="badge badge-danger">Inactiva</span>
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-success btn-sm"  @click="ModalOpen('Editar', Registro)"  title="Editar registro">
@@ -34,7 +34,7 @@
             </table>
           </div>
 
-          <pagination-links :Pagination="Pagination"> </pagination-links>
+
 
         </div>
 
@@ -55,14 +55,14 @@
               <div class="modal-body">
                 <form action="" method="post" enctype="multipart/form-data" @keydown="ErrorsClear($event.target.name)">
                     <label>Nombre/Descripción del Cargo :</label>
-                      <input type="text" class="form-control" :class = "{ 'is-invalid': ErrorHas('nom_cargo')}"
+                      <input type="text" class="form-control" :class = "{ 'is-invalid': ErrorHas('nom_med')}"
                               autofocus = "autofocus"
-                              name      = 'nom_cargo'
+                              name      = 'nom_med'
                               placeholder="Descripción de cargo"
-                              v-model   = "nom_cargo" >
-                        <div style="color: red;" v-if="ErrorHas('nom_cargo')">
+                              v-model   = "nom_med" >
+                        <div style="color: red;" v-if="ErrorHas('nom_med')">
                           <i class="fa  fa-hand-o-right" ></i>
-                          <label class="" v-text="ErrorGet('nom_cargo')"> </label>
+                          <label class="" v-text="ErrorGet('nom_med')"> </label>
                         </div>
                  <br>
                     <div class="input-group mb-4" v-if="ModalShowEdit">
@@ -73,7 +73,7 @@
                         <span class="checkmark"></span>
                       </label>
                     </div>
-                      <input type="hidden" v-model="id_cargo">
+                      <input type="hidden" v-model="id_med">
                 </form>
               </div>
               <div class="modal-footer">
@@ -97,8 +97,8 @@
               </div>
               <div class="modal-body">
                 <p>Confirma que desea borrar el registro : <br>
-                  &nbsp;&nbsp;&nbsp;<strong v-text="nom_cargo"> </strong>&nbsp; ?</p>
-                <input type="hidden" v-model="id_cargo">
+                  &nbsp;&nbsp;&nbsp;<strong v-text="nom_med"> </strong>&nbsp; ?</p>
+                <input type="hidden" v-model="id_med">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" @click="ModalClose()">Cerrar</button>
@@ -124,8 +124,8 @@
                  DatosTabla        : [],
                  ErrorsController  : {},
                  Pagination        : {},
-                 id_cargo          : 0,
-                 nom_cargo         : '',
+                 id_med          : 0,
+                 nom_med         : '',
                  inactivo          : 0,
               }
        },
@@ -135,7 +135,7 @@
        methods: {
           Listar(){
             let Me = this
-            axios.get(`/cargos?page=${this.$route.query.page || 1}`)
+            axios.get(`/medidas?page=${this.$route.query.page || 1}`)
             .then( response =>{
                Me.DatosTabla =  response.data.data ;
                Me.Pagination = response.data;
@@ -146,7 +146,7 @@
 
           Grabar(){
                 let Me = this;
-                axios.post('/cargos',{'nom_cargo' : Me.nom_cargo
+                axios.post('/medidas',{'nom_med' : Me.nom_med
                 }).then( response => {
                     Me.ModalClose();
                     Me.Listar();
@@ -156,8 +156,8 @@
             },
             Actualizar(){
                 let Me   = this;
-                let URL  = '/cargos/'+Me.id_cargo;
-                axios.put( URL,{'nom_cargo' : Me.nom_cargo, 'id_cargo' : Me.id_cargo, 'inactivo' : Me.inactivo
+                let URL  = '/medidas/'+Me.id_med;
+                axios.put( URL,{'nom_med' : Me.nom_med, 'id_med' : Me.id_med, 'inactivo' : Me.inactivo
                 }).then(  response => {
                     Me.ModalClose();
                     Me.Listar();
@@ -166,7 +166,7 @@
             },
           Borrar(){
                 let Me = this;
-                var url = '/cargos'   + '/'+this.id_cargo;
+                var url = '/medidas'   + '/'+this.id_med;
                 axios.delete(url).then(response => {
                   Me.ModalClose();
                   Me.Listar();
@@ -177,13 +177,13 @@
              },
 
           ClearFields(){
-              this.nom_cargo  = '';
-              this.id_cargo   = 0;
+              this.nom_med  = '';
+              this.id_med   = 0;
           },
 
           DataFields( data ){
-            this.nom_cargo  = data.nom_cargo;
-            this.id_cargo   = data.id_cargo;
+            this.nom_med  = data.nom_med;
+            this.id_med   = data.id_med;
             this.inactivo   = data.inactivo;
           },
        }, // Methods
