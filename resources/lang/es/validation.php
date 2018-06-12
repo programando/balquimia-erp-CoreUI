@@ -139,5 +139,6 @@ return [
         'nom_med'               => 'nombre de la unidad de medida',
         'nom_linea'             => 'nombre de línea',
         'cod_linea'            =>  'código',
+        'nom_sub_linea'        => 'Nombre sub-línea',
     ],
 ];

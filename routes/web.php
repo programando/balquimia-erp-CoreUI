@@ -15,8 +15,9 @@ Route::get('update-password/{token}'  , 'LoginController@UpdatePasswordShowForm'
 Route::post('update-password'         , 'LoginController@UpdatePassword')->name('update-password');
 
 Route::middleware(['auth'])->group(function () {
-   Route::resource('/cargos',         'MstroCargosController',       ['except'=>'edit','create']);
-   Route::resource('/medidas',        'MstroUndsMedidaController',   ['except'=>'edit','create']);
+   Route::resource('/cargos',         'MstroCargosController',            ['except'=>'edit','create', 'show']);
+   Route::resource('/medidas',        'MstroUndsMedidaController',        ['except'=>'edit','create']);
+   Route::resource('/sublineas',      'MstroLineasSubLineasController',   ['except'=>'edit','create','show']);
    Route::get('/{any?}',             'DashBoardController@Index')->name('dashboad')->where('any','.*');
 });
 

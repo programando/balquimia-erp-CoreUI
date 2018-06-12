@@ -16,23 +16,8 @@ class MstroCargosController extends Controller
     }
 
     public function index() {
-
         $Cargos =  Cargos::orderBy('nom_cargo')->where('id_cargo','>','0')->paginate(10);
         return $Cargos ;
-
-        /* return [
-            'pagination' => [
-                'total'        => $Cargos->total(),
-                'current_page' => $Cargos->currentPage(),
-                'per_page'     => $Cargos->perPage(),
-                'last_page'    => $Cargos->lastPage(),
-                'from'         => $Cargos->firstItem(),
-                'to'           => $Cargos->lastItem(),
-            ],
-            'Registros' => $Cargos
-        ];
-        */
-
     }
 
 
@@ -50,9 +35,7 @@ class MstroCargosController extends Controller
         $Cargo->save();
     }
 
-    public function show()  {
-        return view('generales.cargos');
-    }
+
 
     public function update(Request $FormData)   {
         $this->validate( $FormData , ['nom_cargo'=>'required']);

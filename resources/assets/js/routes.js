@@ -19,6 +19,10 @@ export default new Router({
           name      : 'medidas',
           path      : '/medidas'     },
 
+        { component : require('./views/maestros/LineasSubLineas') ,
+          name      : 'sublineas',
+          path      : '/sublineas'     },
+
 /*
         { component : require('./components/maestros/Lineas')  ,
           name      : 'lineas',

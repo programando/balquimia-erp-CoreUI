@@ -11,19 +11,19 @@ class MstroLineasSubLinea extends Model
   protected $table      = 'mstro_lineas_sub_lineas';
 
   protected $casts = [
-    'id_linea' => 'int',
     'inactivo' => 'bool'
   ];
 
   protected $fillable = [
-    'id_linea',
     'nom_sub_linea',
     'inactivo'
   ];
 
 
-  public function Linea() {
-    return $this->belongsTo(\App\Models\MstroLinea::class, 'id_linea');
-  }
+    public function setNomSubLineaAttribute ( $value ){
+        $value = TrimString ( $value,45);
+        $this->attributes['nom_sub_linea'] = $value ;
+    }
+
 
 }

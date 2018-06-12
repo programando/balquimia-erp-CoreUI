@@ -14,6 +14,7 @@
            <li class="nav-item">
               <router-link :to="{name:'cargos'}"     class="nav-link opc"> Cargos </router-link>
               <router-link :to="{name:'medidas'}"    class="nav-link opc"> Unds. Medida </router-link>
+              <router-link :to="{name:'sublineas'}"  class="nav-link opc"> Sub-Líneas </router-link>
             </li>
           </ul>
         </li>
