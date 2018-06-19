@@ -14,6 +14,7 @@ module.exports = {
               this.ModalTitle = '';
               if ( QueHacer=='Nuevo' ){
                   this.ClearFields();
+                  this.ModalTitle    = 'Nuevo Registro';
               }
              if ( QueHacer=='Editar' ){
                   this.ClearFields();

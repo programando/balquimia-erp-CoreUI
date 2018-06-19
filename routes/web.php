@@ -1,6 +1,6 @@
 <?php
 
-//Route::get('prueba', 'MstroLineasController@prueba');
+Route::get('/prueba', 'MstroLineasController@prueba');
 
 /** LOGIN */
 /*-----------------*/
@@ -15,18 +15,20 @@ Route::get('update-password/{token}'  , 'LoginController@UpdatePasswordShowForm'
 Route::post('update-password'         , 'LoginController@UpdatePassword')->name('update-password');
 
 Route::middleware(['auth'])->group(function () {
-   Route::resource('/cargos',         'MstroCargosController',            ['except'=>'edit','create', 'show']);
-   Route::resource('/medidas',        'MstroUndsMedidaController',        ['except'=>'edit','create']);
-   Route::resource('/sublineas',      'MstroLineasSubLineasController',   ['except'=>'edit','create','show']);
-   Route::get('/{any?}',             'DashBoardController@Index')->name('dashboad')->where('any','.*');
+   Route::resource('/cargos'        , 'MstroCargosController'             ,['except'=>'edit','create', 'show'] );
+   Route::resource('/medidas'       , 'MstroUndsMedidaController'         ,['except'=>'edit','create', 'show'] );
+   Route::resource('/lineas'        , 'MstroLineasController'             ,['except'=>'edit','create', 'show'] );
+   Route::delete('/sublineas-destroy/{idsub}/{idline}'     , 'MstroLineasController@SubLineasBorrarAsocc',
+                                                                           ['except'=>'edit','create', 'show'] );
+   Route::resource('/sublineas'     , 'MstroLineasSubLineasController'    ,['except'=>'edit','create', 'show'] );
+   Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
+   Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
 });
 
 
 /*
   Route::middleware(['VerifyAutenticationAndRequestJson'])->group(function () {
-
       Route::resource('lineas',         'MstroLineasController',       ['except'=>'edit','create']);
-
   });
 */
 

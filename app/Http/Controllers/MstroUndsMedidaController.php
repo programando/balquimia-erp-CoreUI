@@ -12,18 +12,12 @@ class MstroUndsMedidaController extends Controller
 
 
     public function __construct(){
-        $this->Page_Title = 'Unidades de Medida';
+
     }
 
     public function index() {
         $UnidadesMedida =  UnidadesMedida::orderBy('nom_med')->where('id_med','>','0')->paginate(10);
         return $UnidadesMedida;
-    }
-
-
-    public function showForm(){
-        $Page_Title = $this->Page_Title;
-        return view('productos.und-medida', compact('Page_Title'));
     }
 
 
@@ -36,12 +30,6 @@ class MstroUndsMedidaController extends Controller
     }
 
 
-    public function show()  {
-        return view('productos.und-medida');
-    }
-
-
-
     public function update(Request $FormData)   {
         $this->validate( $FormData , ['nom_med'=>'required']);
         $UnidadMed           = UnidadesMedida::findOrFail($FormData->id_med );
@@ -49,7 +37,6 @@ class MstroUndsMedidaController extends Controller
         $UnidadMed->inactivo = $FormData->inactivo;
         $UnidadMed->update();
     }
-
 
     public function destroy($id) {
         $UnidadMed = UnidadesMedida::findOrFail($id );

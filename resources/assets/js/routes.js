@@ -19,6 +19,10 @@ export default new Router({
           name      : 'medidas',
           path      : '/medidas'     },
 
+        { component : require('./views/maestros/Lineas') ,
+          name      : 'lineas',
+          path      : '/lineas'     },
+
         { component : require('./views/maestros/LineasSubLineas') ,
           name      : 'sublineas',
           path      : '/sublineas'     },
@@ -35,7 +39,7 @@ export default new Router({
       ],
    linkExactActiveClass: 'active',
    //linkActiveClass:   'active',
-   //mode:              'history',
+   mode:              'history',
    scrollBehavior(){
       return { x:0, y:0 };
    }

@@ -13,6 +13,11 @@ class MstroLineasSubLineasController extends Controller
         return $SubLineas ;
     }
 
+    public function ConsultaSubLineas()  {
+        $SubLineas =  SubLineas::orderBy('nom_sub_linea')->where('id_sub_linea','>','0')->get();
+        return $SubLineas ;
+    }
+
     public function store(Request $FormData) {
         $this->validate( $FormData , ['nom_sub_linea'=>'required']);
         $SubLineas           = new SubLineas;

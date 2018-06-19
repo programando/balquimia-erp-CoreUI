@@ -9,8 +9,10 @@
 import Vue       from 'vue';
 import router    from './routes';
 
-Vue.component('pagination-links', require( './components/PaginationLinks' ));
 
+Vue.component('pagination-links'        ,require( './components/PaginationLinks' ));
+Vue.component('sublineas'               ,require( './components/LineasSubLineas' ));
+Vue.component('select2'                 ,require( './components/Ctrl_SelectMultiple' ));
 
 const VueApp = new Vue({
 
@@ -23,6 +25,12 @@ const VueApp = new Vue({
 
 //https://github.com/asika32764/vue2-animate
 //require('vue2-animate/dist/vue2-animate.min.css')
+
+/* Librerias JS
+         http://numeraljs.com/
+         https://momentjs.com/
+  */
+
 
 
 

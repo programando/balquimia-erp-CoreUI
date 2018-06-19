@@ -1,25 +1,33 @@
 <template>
+
   <div class="container">
+
     <div class="row justify-content-center">
       <div class="col-lg-8">
         <div class="card">
-          <div class="card-header"> <i class="fa fa-align-justify"></i> Cargos
+          <div class="card-header"> <i class="fa fa-align-justify"></i> Líneas de Producto
             <button type="button" class="btn btn-sm btn-primary pull-right"   @click="ModalOpen('Nuevo')"> Crear Nuevo Registro</button>
           </div>
           <div class="card-body">
             <table class="table table-responsive-sm">
               <thead>
                 <tr>
-                  <th>Descripción</th>
+                  <th>Código</th>
+                  <th>Nombre/Descripción</th>
                   <th>Estado</th>
+                  <th>Sub-Líenas</th>
                   <th>Editar/Eliminar</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="Registro in DatosTabla" :key="Registro.id_cargo">
-                  <td v-text="Registro.nom_cargo"></td>
+                <tr v-for="Registro in DatosTabla" :key="Registro.id_linea">
+                  <td v-text="Registro.cod_linea"></td>
+                  <td v-text="Registro.nom_linea"></td>
                   <td>
-                    <span v-if="Registro.inactivo" class="badge badge-danger">Inactivo</span>
+                    <span v-if="Registro.inactivo" class="badge badge-danger">Inactiva</span>
+                  </td>
+                  <td>
+                    <sublineas :Registro="Registro"></sublineas>
                   </td>
                   <td class="text-center">
                     <button type="button" class="btn btn-success btn-sm"  @click="ModalOpen('Editar', Registro)"  title="Editar registro">
@@ -33,12 +41,15 @@
               </tbody>
             </table>
           </div>
-              <pagination-links :Pagination="Pagination"> </pagination-links>
+
+
+
         </div>
+
       </div>
     </div>
 
-        <!-- MODAL PARA GRABAR REGISTRO -->
+    <!-- MODAL PARA GRABAR REGISTRO -->
         <div class="modal fade" data-backdrop="static" data-keyboard="false" :class="{'Modal-Show' : ModalShow}"
                   tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-primary" role="document">
@@ -50,37 +61,67 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form action="" method="post" enctype="multipart/form-data" @keydown="ErrorsClear($event.target.name)">
-                    <label>Nombre/Descripción del Cargo :</label>
-                      <input type="text" class="form-control" :class = "{ 'is-invalid': ErrorHas('nom_cargo')}"
-                              autofocus = "autofocus"
-                              name      = 'nom_cargo'
-                              placeholder="Descripción de cargo"
-                              v-model   = "nom_cargo" >
-                        <div style="color: red;" v-if="ErrorHas('nom_cargo')">
+                <form  class="form-horizontal" method="post" enctype="multipart/form-data" @keydown="ErrorsClear($event.target.name)">
+                  <div class="form-group row">
+
+                    <label class="col-md-3 col-form-label">Código :</label>
+                    <div class="col-md-9">
+                      <input type="text"   :class = "{ 'is-invalid': ErrorHas('cod_linea')}" :disabled= "ModalShowEdit==1"
+                             class="form-control"
+                             style="width: 60px;"
+                             v-model   = "form.cod_linea" >
+                        <div class="help-block" style="color: red;" v-if="ErrorHas('cod_linea')">
                           <i class="fa  fa-hand-o-right" ></i>
-                          <label class="" v-text="ErrorGet('nom_cargo')"> </label>
+                          <label class="" v-text="ErrorGet('cod_linea')"> </label>
                         </div>
-                 <br>
+                    </div>
+
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-md-3 col-form-label">Línea :</label>
+                    <div class="col-md-9">
+                      <input type="text"   :class = "{ 'is-invalid': ErrorHas('nom_linea')}"
+                             class="form-control"
+                             v-model   = "form.nom_linea" >
+                        <div class="help-block" style="color: red;" v-if="ErrorHas('nom_linea')">
+                          <i class="fa  fa-hand-o-right" ></i>
+                          <label class="" v-text="ErrorGet('nom_linea')"> </label>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-12">
                     <div class="input-group mb-4" v-if="ModalShowEdit">
-                      <label class="container-chk"value="" id="inactivo" >
-                        <span  v-if="!inactivo"> Registro Activo</span>
-                        <span  v-else="inactivo"> Registro Inactivo</span>
-                        <input type="checkbox" v-model="inactivo" :checked="inactivo" name="inactivo">
+                      <label class="container-chk"value="" >
+                        <span  v-if="!form.inactivo"> Registro Activo</span>
+                        <span  v-else="form.inactivo"> Registro Inactivo</span>
+                        <input type="checkbox" v-model="form.inactivo" :checked="form.inactivo">
                         <span class="checkmark"></span>
                       </label>
                     </div>
-                      <input type="hidden" v-model="id_cargo">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                      <label class="col-md-3 col-form-label">Sub-Lineas:</label>
+                      <div class="col-sm-9">
+                          <select2 :options="DatosSubLineas" @SubLineasSeleccionas="SubLineasSeleccionadas"></select2>
+                      </div>
+                  </div>
+                      <input type="hidden" v-model="form.id_linea"   >
                 </form>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="ModalClose()">Cerrar</button>
                 <button type="button" class="btn btn-primary" @click="Grabar()" v-if="!ModalShowEdit" :disabled="AnyError()">Grabar registro</button>
-                <button type="button" class="btn btn-primary" @click="Actualizar()" :disabled="AnyError()" v-else>Actualizar registro</button>
+                <button type="button" class="btn btn-primary" @click="Actualizar()" v-else :disabled="AnyError()" >Actualizar registro</button>
               </div>
             </div> <!-- /.modal-content -->
           </div>   <!-- /.modal-dialog -->
         </div>     <!-- /.modal -->
+
 
        <!-- MODAL PARA BORRAR REGISTRO -->
         <div class="modal fade"  tabindex="-1" role="dialog" :class="{'Modal-Show-Delete':ModalShowDelete}">
@@ -94,8 +135,8 @@
               </div>
               <div class="modal-body">
                 <p>Confirma que desea borrar el registro : <br>
-                  &nbsp;&nbsp;&nbsp;<strong v-text="nom_cargo"> </strong>&nbsp; ?</p>
-                <input type="hidden" v-model="id_cargo">
+                  &nbsp;&nbsp;&nbsp;<strong v-text="form.nom_linea"> </strong>&nbsp; ?</p>
+                <input type="hidden" v-model="form.id_linea">
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" @click="ModalClose()">Cerrar</button>
@@ -106,26 +147,46 @@
         </div>     <!-- Fin del modal Eliminar -->
 
 
-  </div> <!-- /container !-->
+
+  </div>
 
 </template>
-
+<!--
+          <select name="city" id="city" class="form-control" v-model="city" >
+            <option v-for="item in items"
+                    value="@{{item.list}}"
+                    :selected="item.list=={{json_encode($ads->city)}}?true : false">
+                @{{item.list}}
+            </option>
+        </select>
+      -->
 
 <script>
+
     import FormValidation from '../../mixins/FormValidation';
     import Modals         from '../../mixins/Modals';
+
     export default {
         mounted() {
             this.Listar();
-           },
+            this.SublineasConsulta();
+        },
+
         data() {
             return {
                  DatosTabla        : [],
+                 DatosSubLineas    : [],
                  ErrorsController  : {},
                  Pagination        : {},
-                 id_cargo          : 0,
-                 nom_cargo         : '',
-                 inactivo          : 0,
+                 cod_linea     :'',
+                 nom_linea : '',
+                 form : {
+                      cod_linea : '',
+                      nom_linea : '',
+                      orden     : '',
+                      inactivo  : '',
+                      sublineas : [],
+                 },
               }
        },
 
@@ -134,7 +195,7 @@
        methods: {
           Listar(){
             let Me = this
-            axios.get(`/cargos?page=${this.$route.query.page || 1}`)
+            axios.get(`/lineas?page=${this.$route.query.page || 1}`)
             .then( response =>{
                Me.DatosTabla =  response.data.data ;
                Me.Pagination = response.data;
@@ -143,21 +204,34 @@
             .catch ( this.ErrorOnFail ) ;
           },
 
+          SublineasConsulta(){
+              let Me = this;
+              axios.get('/sublineas-show')
+                .then( response =>{
+                   Me.DatosSubLineas =  response.data;
+                })
+                .catch ( this.ErrorOnFail ) ;
+          },
+
+          SubLineasSeleccionadas( Seleccionadas ){
+              this.form.sublineas = Seleccionadas;
+          },
+
           Grabar(){
                 let Me = this;
-                axios.post('/cargos',{'nom_cargo' : Me.nom_cargo
-                }).then( response => {
+                axios.post('/lineas', Me.form ).then( response => {
                     Me.ModalClose();
                     Me.Listar();
                     toastr.success( "Registro grabado con éxito !!!");
                 })
-                .catch(this.ErrorOnFail );
+                .catch( this.ErrorOnFail );
             },
+
             Actualizar(){
                 let Me   = this;
-                let URL  = '/cargos/'+Me.id_cargo;
-                axios.put( URL,{'nom_cargo' : Me.nom_cargo, 'id_cargo' : Me.id_cargo, 'inactivo' : Me.inactivo
-                }).then(  response => {
+                let URL  = '/lineas/'+Me.id_linea;
+                axios.put( URL, Me.form
+                ).then(  response => {
                     Me.ModalClose();
                     Me.Listar();
                     toastr.success( 'Registro actualizado con éxito !!!!' );
@@ -165,7 +239,7 @@
             },
           Borrar(){
                 let Me = this;
-                var url = '/cargos'   + '/'+this.id_cargo;
+                var url = '/lineas'   + '/'+this.form.id_linea;
                 axios.delete(url).then(response => {
                   Me.ModalClose();
                   Me.Listar();
@@ -176,18 +250,23 @@
              },
 
           ClearFields(){
-              this.nom_cargo  = '';
-              this.id_cargo   = 0;
+              this.form           = {};
+              this.form.sublineas = [];
           },
 
           DataFields( data ){
-            this.nom_cargo  = data.nom_cargo;
-            this.id_cargo   = data.id_cargo;
-            this.inactivo   = data.inactivo;
+            this.form.cod_linea  = data.cod_linea;
+            this.form.nom_linea  = data.nom_linea;
+            this.form.id_linea   = data.id_linea;
+            this.form.inactivo   = data.inactivo;
           },
-       }, // Methods
+       },  // Methods
 
     };
 </script>
 
 
+<style src="vue-multiselect/dist/vue-multiselect.min.css">
+
+
+</style>
