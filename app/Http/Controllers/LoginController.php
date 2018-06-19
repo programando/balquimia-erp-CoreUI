@@ -58,7 +58,7 @@ class LoginController extends Controller
             Auth::logout();
             Session::flush();
             Cache::flush();
-            return Redirect('/');
+            return Redirect('/login');
     }
 
 
