@@ -17,6 +17,12 @@ class TercerosController extends Controller
         return  $Clientes;
     }
 
+        public function ClientesLista1( ){
+
+        $Clientes = Terceros::where('cliente','=','1')->get();
+        return  $Clientes;
+    }
+
 /*
         $filtro = $request->filtro;
         $proveedores = Proveedor::join('personas','proveedores.id','=','personas.id')

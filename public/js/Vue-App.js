@@ -39614,6 +39614,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -39629,6 +39630,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     methods: {
         AsignarIdTercero: function AsignarIdTercero(IdClienteSelecionado) {
             this.id_terc = IdClienteSelecionado;
+        },
+        BuscarCliente: function BuscarCliente() {
+            axios.get('/terceros/buscar').then(function (response) {
+                console.log(response.data);
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
     }
 });
@@ -39646,6 +39654,18 @@ var render = function() {
       _c("div", { staticClass: "col-sm-12" }, [
         _c("div", { staticClass: "card" }, [
           _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              on: {
+                click: function($event) {
+                  _vm.BuscarCliente()
+                }
+              }
+            },
+            [_vm._v(" Consulta")]
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
             _c("div", { staticClass: "row" }, [

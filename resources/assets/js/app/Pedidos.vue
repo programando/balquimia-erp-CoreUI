@@ -7,6 +7,7 @@
                     <strong>Registro de Pedidos</strong>
 
                   </div>
+                  <button @click="BuscarCliente()"> Consulta</button>
                   <div class="card-body">
                     <div class="row">
                       <div class="col-sm-5">
@@ -121,6 +122,15 @@ import vSelect   from 'vue-select';
               this.id_terc = IdClienteSelecionado;
           },
 
+          BuscarCliente(){
+              axios.get('/terceros/buscar')
+              .then( response =>{
+                  console.log( response.data )
+              })
+              .catch( error =>{
+                 console.log( error );
+              })
+          }
 
       }
   };
