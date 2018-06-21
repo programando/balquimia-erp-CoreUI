@@ -9,6 +9,11 @@ class Tercero extends Model
    protected $fillable   = ['nom_terc'];
    protected $hiden      = ['id_terc'];
    protected $primaryKey = 'id_terc';
-   protected $table      = 'Terceros' ;
+   protected $table      = 'terceros' ;
 
 }
+
+
+
+
+
