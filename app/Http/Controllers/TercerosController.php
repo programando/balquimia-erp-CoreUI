@@ -19,8 +19,8 @@ class TercerosController extends Controller
 
         public function ClientesLista1( ){
 
-        $Clientes = Terceros::where('cliente','=','1')->get();
-        return  $Clientes;
+        //$Clientes = Terceros::where('cliente','=','1')->get();
+        return  'ok';
     }
 
 /*
