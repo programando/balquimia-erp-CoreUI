@@ -27,17 +27,17 @@ export default new Router({
           name      : 'sublineas',
           path      : '/sublineas'     },
 
+       { component : require('./app/Pedidos') ,
+          name      : 'pedidos',
+          path      : '/pedidos'     },
 /*
-        { component : require('./components/maestros/Lineas')  ,
-          name      : 'lineas',
-          path      : '/lineas'     },
 
         { path      : '*' ,
           component : require('./components/errors/404')
         }*/
 
       ],
-   linkExactActiveClass: 'active',
+   linkExactActiveClass: 'menuactive',
    //linkActiveClass:   'active',
    mode:              'history',
    scrollBehavior(){

@@ -1,5 +1,5 @@
 <?php
-//Route::get('/prueba', 'MstroLineasController@prueba');
+ //Route::get('/terceros/buscar','TercerosController@ClientesLista' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -20,6 +20,8 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
                                                                            ['except'=>'edit','create', 'show'] );
    Route::resource('/sublineas'     , 'MstroLineasSubLineasController'    ,['except'=>'edit','create', 'show'] );
    Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
+
+   Route::get('/terceros/clientes/buscar','TercerosController@ClientesLista' );
 });
 Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
 

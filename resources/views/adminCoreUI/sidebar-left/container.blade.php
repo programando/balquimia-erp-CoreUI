@@ -7,6 +7,18 @@
       </li>
 
       <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle collapsed" href="#"><i class="nav-icon icon-basket-loaded"></i>
+            Comercial
+        </a>
+        <ul class="nav-dropdown-items">
+           <li class="nav-item">
+              <router-link :to="{name: 'pedidos'}"     class="nav-link opc"> Registro Pedidos </router-link>
+
+            </li>
+          </ul>
+        </li>
+
+      <li class="nav-item nav-dropdown">
         <a class="nav-link nav-dropdown-toggle collapsed" href="#"><i class="nav-icon icon-puzzle"></i>
             Configuración
         </a>

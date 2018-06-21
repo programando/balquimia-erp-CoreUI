@@ -13,6 +13,7 @@ import router    from './routes';
 Vue.component('pagination-links'        ,require( './components/PaginationLinks' ));
 Vue.component('sublineas'               ,require( './components/LineasSubLineas' ));
 Vue.component('select2'                 ,require( './components/Ctrl_SelectMultiple' ));
+Vue.component('selectsearch'            ,require( './components/Ctrl_SelectSearch' ));
 
 const VueApp = new Vue({
 
