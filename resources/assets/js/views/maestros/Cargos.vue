@@ -7,6 +7,7 @@
             <button type="button" class="btn btn-sm btn-primary pull-right"   @click="ModalOpen('Nuevo')"> Crear Nuevo Registro</button>
           </div>
           <div class="card-body">
+            <button @click="BuscarCliente()"> Consulta</button>
             <table class="table table-responsive-sm">
               <thead>
                 <tr>
@@ -141,6 +142,15 @@
                delete Me.Pagination.data;
             })
             .catch ( this.ErrorOnFail ) ;
+          },
+          BuscarCliente(){
+              axios.get('/terceros/buscar')
+              .then( response =>{
+                  console.log( response.data )
+              })
+              .catch( error =>{
+                 console.log( error );
+              });
           },
 
           Grabar(){
