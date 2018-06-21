@@ -13,10 +13,12 @@
                       <div class="col-sm-5">
                         <div class="form-group">
                           <label for="name">Cliente</label>
-                          <selectsearch
+
+                         <!-- <selectsearch
                               UrlSearch        ='/terceros/clientes/buscar'
                               @AsignarIdTercero="AsignarIdTercero">
                           </selectsearch>
+                            -->
                         </div>
                       </div>
 
@@ -107,7 +109,7 @@
 
 </template>
 <script>
-import vSelect   from 'vue-select';
+//import vSelect   from 'vue-select';
 
   export default {
       data(){
