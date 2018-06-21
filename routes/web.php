@@ -1,5 +1,5 @@
 <?php
- //Route::get('/terceros/buscar','TercerosController@ClientesLista' );
+ Route::get('/terceros/buscar','TercerosController@ClientesLista' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');

@@ -15,7 +15,7 @@
 <script>
         import vSelect   from 'vue-select';
          export default {
-                props :['UrlSearch', 'texto'],
+                props :['UrlSearch'],
           data(){
             return {
                 Datos : [],
