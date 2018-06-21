@@ -144,9 +144,9 @@
             .catch ( this.ErrorOnFail ) ;
           },
           BuscarCliente(){
-              axios.get('/terceros/buscar')
+              axios.get('/medidas')
               .then( response =>{
-                  console.log( response.data )
+                  console.log( response.data );
               })
               .catch( error =>{
                  console.log( error );

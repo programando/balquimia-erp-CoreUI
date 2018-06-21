@@ -36502,7 +36502,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }).catch(this.ErrorOnFail);
         },
         BuscarCliente: function BuscarCliente() {
-            axios.get('/terceros/buscar').then(function (response) {
+            axios.get('/medidas').then(function (response) {
                 console.log(response.data);
             }).catch(function (error) {
                 console.log(error);
