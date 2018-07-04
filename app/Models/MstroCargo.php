@@ -22,7 +22,7 @@ class MstroCargo extends Model
 
 
     public function setNomCargoAttribute ( $value ){
-        $value = TrimString ( $value,49); // 49 Longitud del campo en la base de datos
+        $value = TrimString ( $value,49);
         $this->attributes['nom_cargo'] = $value ;
     }
 

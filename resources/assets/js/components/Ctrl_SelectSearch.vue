@@ -4,11 +4,11 @@
             :on-search  ="Buscar"
             :onChange   ="AsignarIdTercero"
             :options    = 'Datos'
-            label       ="nom_terc"
-            placeholder = 'buscar registros....'
-          >
+            label       ="nom_sys"
+            placeholder = 'buscar registros....'          >
             <span slot="no-options"></span>
           </vSelect>
+
       </div>
 </template>
 

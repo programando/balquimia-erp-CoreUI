@@ -107,7 +107,32 @@ blockquote .frase{
   background-color: #3c29297a !important;
 }
  td {
-    padding: 0.3rem !important;
+    padding: 0.2rem !important;
     vertical-align: middle !important;
-
+    font-size: 13px;
 }
+
+th {
+  text-align: center;
+}
+.form-group {
+    margin-bottom: 0.5rem  !important;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.2rem;
+}
+
+.form-control {
+
+    padding: 0.25rem 0.75rem;
+    font-size: 12px !important;
+}
+
+.v-select .dropdown-toggle {
+    font-size: 14px;
+    height: 30px;
+}
+
+

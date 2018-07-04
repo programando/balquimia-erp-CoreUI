@@ -57,7 +57,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
       return [
-        'email.exists' => 'Cuenta de correo (Email) no encontrado en nuestros registros',
+        'email.exists' => 'Cuenta de correo (Email) no encontrada en nuestros registros',
       ];
     }
 

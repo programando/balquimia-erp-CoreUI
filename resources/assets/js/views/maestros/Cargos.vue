@@ -7,7 +7,7 @@
             <button type="button" class="btn btn-sm btn-primary pull-right"   @click="ModalOpen('Nuevo')"> Crear Nuevo Registro</button>
           </div>
           <div class="card-body">
-            <button @click="BuscarCliente()"> Consulta</button>
+
             <table class="table table-responsive-sm">
               <thead>
                 <tr>
@@ -112,12 +112,20 @@
 </template>
 
 
+
+
 <script>
     import FormValidation from '../../mixins/FormValidation';
     import Modals         from '../../mixins/Modals';
+    import { CONFIG }     from '../../config.js';
+
+    //return axios.get( CONFIG.API_URL + '/cafes' );
+    //https://serversideup.net/build-vuex-module/
+
     export default {
         mounted() {
             this.Listar();
+            //console.log( CONFIG.ERROR_MSG)
            },
         data() {
             return {
@@ -143,15 +151,7 @@
             })
             .catch ( this.ErrorOnFail ) ;
           },
-          BuscarCliente(){
-              axios.get('/terceros/buscar')
-              .then( response =>{
-                  console.log( response.data );
-              })
-              .catch( error =>{
-                 console.log( error );
-              });
-          },
+
 
           Grabar(){
                 let Me = this;

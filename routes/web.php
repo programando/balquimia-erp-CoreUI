@@ -1,5 +1,5 @@
 <?php
- //Route::get('/terceros/buscar','TercerosController@ClientesLista' );
+// Route::get('/terceros/facturas','TercerosController@ClientesFacturas' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -21,8 +21,13 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    Route::resource('/sublineas'     , 'MstroLineasSubLineasController'    ,['except'=>'edit','create', 'show'] );
    Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
 
-   Route::get('/terceros/clientes/buscar','TercerosController@ClientesLista' );
-   Route::get('/terceros/buscar','TercerosController@ClientesLista1' );
+   Route::get('/clientes/buscar'                ,'TercerosController@ClientesLista'     );
+   Route::get('/clientes/vendedores'            ,'TercerosController@VendedoresCliente' );
+   Route::get('/clientes/compras'               ,'TercerosController@Compras'           );
+   Route::get('/terceros/notas/ventas'          ,'TercerosController@NotasVenta'        );
+   Route::get('/terceros/notas/cartera'         ,'TercerosController@NotasCartera'      );
+   Route::get('/terceros/contactos'             ,'TercerosController@Contactos'      );
+
 });
 Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');
 
