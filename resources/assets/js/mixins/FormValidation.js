@@ -1,5 +1,4 @@
 module.exports = {
-
     methods:{
             AnyError      ( ) {
                 return Object.keys(this.ErrorsController).length > 0 ;

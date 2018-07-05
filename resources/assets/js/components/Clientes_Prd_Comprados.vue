@@ -48,14 +48,13 @@
 
   export default{
       props :['Compras'],
-
       methods: {
-
-          AgregarProductoPedido( data ){
+          AgregarProductoPedido( data ) {
               this.$emit('AgregarProductoPedido', data);
-          },
-
+      },
 
       }, //Methods
   };
 </script>
+
+

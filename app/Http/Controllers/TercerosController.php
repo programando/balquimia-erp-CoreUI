@@ -64,7 +64,9 @@ class TercerosController extends Controller {
 
     }
 
-
+    public function PedidoGrabar( Request $FormData ){
+        return $FormData;
+    }
 /*
         $filtro = $request->filtro;
         $proveedores = Proveedor::join('personas','proveedores.id','=','personas.id')

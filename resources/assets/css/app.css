@@ -136,3 +136,13 @@ label {
 }
 
 
+.tab-content .tab-pane {
+    padding: 0.3rem !important;
+}
+
+.card-body {
+    padding: 1rem !important;
+}
+.card {
+    margin-bottom: 1.5rem !important;
+}

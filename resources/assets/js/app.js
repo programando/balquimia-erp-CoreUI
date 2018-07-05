@@ -30,12 +30,15 @@ Vue.filter('NumeroEntero', (value) => {  return numeral(value).format('0,0');   
 const VueApp = new Vue({
     el: '#VueApp',
     router,
+
 });
 
 
 //https://vue-multiselect.js.org/#sub-select-with-search
 //https://github.com/asika32764/vue2-animate
 //require('vue2-animate/dist/vue2-animate.min.css')
+// https://github.com/euvl/vue-js-popover
+//https://github.com/vuejs/awesome-vue
 
 /* Librerias JS
          http://numeraljs.com/
