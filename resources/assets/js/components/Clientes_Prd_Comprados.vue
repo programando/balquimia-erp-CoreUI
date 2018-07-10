@@ -1,5 +1,7 @@
 <template>
    <div>
+
+
     <table class="table table-responsive-sm table-bordered table-striped table-sm">
       <thead>
           <tr>
@@ -31,8 +33,9 @@
            <td class="text-right"> {{ Compra.vr_dscto        | NumeroEntero  }} </td>
            <td class="text-right"> {{ Compra.vr_unit_real    | NumeroEntero  }} </td>
            <td>
-              <button type="button" class="btn btn-success btn-sm" @click="AgregarProductoPedido( Compra )"
-                title="Agregar producto al pedido">
+
+              <button   title="Agregar Producto"
+                    type="button" class="btn btn-success btn-sm" @click="AgregarProductoPedido( Compra )">
                  <i class="fa  fa-shopping-basket" ></i>
               </button>
             </td>

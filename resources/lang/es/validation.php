@@ -58,7 +58,7 @@ return [
     'numeric'              => ':attribute debe ser numérico.',
     'present'              => 'El campo :attribute debe estar presente.',
     'regex'                => 'El formato de :attribute es inválido.',
-    'required'             => 'El campo :attribute es un dato obligatorio.',
+    'required'             => ':attribute es un dato obligatorio.',
     'required_if'          => 'El campo :attribute es obligatorio cuando :other es :value.',
     'required_unless'      => 'El campo :attribute es obligatorio a menos que :other esté en :values.',
     'required_with'        => 'El campo :attribute es obligatorio cuando :values está presente.',
@@ -140,5 +140,7 @@ return [
         'nom_linea'             => 'nombre de línea',
         'cod_linea'            =>  'código',
         'nom_sub_linea'        => 'Nombre sub-línea',
+        'fcha_dspcho'          => 'Fecha despacho',
+
     ],
 ];

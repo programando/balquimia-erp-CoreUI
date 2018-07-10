@@ -1,5 +1,5 @@
 <?php
-// Route::get('/terceros/facturas','TercerosController@ClientesFacturas' );
+ //Route::get('/clientes/buscarr','TercerosController@ClientesBusqueda' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');
@@ -21,13 +21,16 @@ Route::middleware(['VerifyUserRequestJson'])->group(function () {
    Route::resource('/sublineas'     , 'MstroLineasSubLineasController'    ,['except'=>'edit','create', 'show'] );
    Route::get('/sublineas-show'     , 'MstroLineasSubLineasController@ConsultaSubLineas');
 
-   Route::get('/clientes/buscar'                ,'TercerosController@ClientesLista'     );
-   Route::get('/clientes/vendedores'            ,'TercerosController@VendedoresCliente' );
-   Route::get('/clientes/compras'               ,'TercerosController@Compras'           );
-   Route::get('/terceros/notas/ventas'          ,'TercerosController@NotasVenta'        );
-   Route::get('/terceros/notas/cartera'         ,'TercerosController@NotasCartera'      );
-   Route::get('/terceros/contactos'             ,'TercerosController@Contactos'      );
-   Route::post('/terceros/pedido/grabar'             ,'TercerosController@PedidoGrabar'      );
+   Route::get('/clientes/buscar'                     ,'TercerosController@ClientesBusqueda'     );
+   Route::get('/clientes/vendedores'                 ,'TercerosController@VendedoresCliente' );
+   Route::get('/clientes/compras'                    ,'TercerosController@Compras'           );
+   Route::get('/terceros/notas/ventas'               ,'TercerosController@NotasVenta'        );
+   Route::get('/terceros/notas/cartera'              ,'TercerosController@NotasCartera'      );
+   Route::get('/terceros/contactos'                  ,'TercerosController@Contactos'         );
+
+
+   Route::post('/pedido/grabar'                      ,'PedidosController@Grabar'            );
+   Route::get('/pedido/dias/financiacion'                      ,'PedidosController@DiasFinanciacion'            );
 
 });
 Route::get('/{any?}'             , 'DashBoardController@Index')->name('dashboad')->where('any','.*');

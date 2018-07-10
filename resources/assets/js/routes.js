@@ -27,7 +27,7 @@ export default new Router({
           name      : 'sublineas',
           path      : '/sublineas'     },
 
-       { component : require('./app/Pedidos') ,
+       { component : require('./views/app/Pedidos') ,
           name      : 'pedidos',
           path      : '/pedidos'     },
 /*

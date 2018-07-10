@@ -355,13 +355,12 @@ th {
 
 label {
     display: inline-block;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
 }
 
 .form-control {
-
-    padding: 0.25rem 0.75rem;
-    font-size: 12px !important;
+    padding: 0.15rem 0.75rem;
+    font-size: 11px !important;
 }
 
 .v-select .dropdown-toggle {
@@ -380,3 +379,5 @@ label {
 .card {
     margin-bottom: 1.5rem !important;
 }
+
+

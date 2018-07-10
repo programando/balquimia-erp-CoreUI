@@ -11,3 +11,9 @@
     <script src="{{mix('js/Vue-App.js')}}"></script>
     <script src="{{mix('js/app.js')}}"></script>
 
+
+ <script>
+    $(document).ready(function(){
+        $('[data-toggle="popover"]').popover();
+    });
+</script>

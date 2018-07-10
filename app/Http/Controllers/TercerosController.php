@@ -12,24 +12,37 @@ class TercerosController extends Controller {
   public function ClientesFacturas(){
       //$Cliente = Terceros::with('Notas')->with('Contactos')->where('id_terc','4167')->get();
       //$Cliente = Terceros::with('Facturas.Detalle.Productos')->where('id_terc','4167')->get();
+     // $Cliente = Terceros:.whereHas('factura', function($factura)){
+     //       aqui el código
+     // }->find($id_cliente)
+    //->select('nro_identif','id_terc','nom_sys','nom_suc', DB::raw('CONCAT(nro_identif, " " , nom_sys) as status'))
 
       return 'Ok';
   }
 
-    public function ClientesLista(Request $FormData ){
+    public function ClientesBusqueda(Request $FormData ){
         $Filtro =  $FormData->filtro;
-        $Clientes = Terceros::where('cliente','=','1')
-                    ->where('nom_sys','like', '%'.$Filtro .'%')
-                    ->select('id_terc','nom_sys','nom_suc')
-                    ->orderBy('nom_sys')->get();
+        if ( !$Filtro ){
+                      $Clientes = Terceros::where('cliente','=','1')
+                    ->select('nro_identif','id_terc','nom_sys','nom_suc')
+                    ->orderBy('nom_sys')->take(10)->get();
+        }else {
+          $Clientes = Terceros::where('cliente','=','1')
+                      ->where('nom_sys','like', '%'.$Filtro .'%')
+                      ->orWhere('nom_suc','like', '%'.$Filtro .'%')
+                      ->orWhere('nro_identif','like', '%'.$Filtro .'%')
+                      ->select('nro_identif','id_terc','nom_sys','nom_suc')
+                      ->orderBy('nom_sys')->get();
+            }
         return  $Clientes;
     }
 
     public function VendedoresCliente ( Request $FormData ){
-        $id_terc    = $FormData->id_terc;
-        $Vendedores = DB::select(' call clientes_busca_vendedores (?)', array($id_terc));
-        $Vendedores = collect($Vendedores);
-        return $Vendedores;
+        $id_terc      = $FormData->id_terc;
+        $DatosCliente = Terceros::with('Municipio')->findOrFail( $id_terc );
+        $Vendedores   = DB::select(' call clientes_busca_vendedores (?)', array($id_terc));
+        $Vendedores   = collect($Vendedores);
+        return ['Vendedores' => $Vendedores, 'Cliente' => $DatosCliente];
     }
 
     public function Compras ( Request $FormData ){
@@ -57,16 +70,14 @@ class TercerosController extends Controller {
     }
 
     public function Contactos(Request $FormData ){
-        $id_terc = $FormData->id_terc;
+        $id_terc   = $FormData->id_terc;
         $Contactos = DB::select(' call terceros_conctactos_x_id_terc (?)', array($id_terc));
-        $Contactos   = collect($Contactos);
+        $Contactos = collect($Contactos);
         return $Contactos;
 
     }
 
-    public function PedidoGrabar( Request $FormData ){
-        return $FormData;
-    }
+
 /*
         $filtro = $request->filtro;
         $proveedores = Proveedor::join('personas','proveedores.id','=','personas.id')

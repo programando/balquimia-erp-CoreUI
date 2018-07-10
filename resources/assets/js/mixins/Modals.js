@@ -8,7 +8,7 @@ module.exports = {
             }
      },
   methods:{
-          ModalOpen( QueHacer, data=[]){
+          ModalOpen( QueHacer='', data=[]){
               this.ErrorclearAll();
               this.ModalShow  = 1;
               this.ModalTitle = '';
