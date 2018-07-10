@@ -257,7 +257,7 @@
               </div>    <!-- /Card -->
           </div>        <!-- /Col-->
       </div>            <!-- row-->
-        <tercerosBuscar :ModalClie="ModalShow" @AsignarIdTercero="AsignarIdTercero"></tercerosBuscar>
+        <tercerosBuscar :ModalClie="ModalShow" @AsignarIdTercero="AsignarIdTercero" UrlBusqueda='/clientes/buscar/'></tercerosBuscar>
 
     </div>              <!-- /animated -->
   </template>
@@ -317,18 +317,19 @@ moment.locale('es');
       computed:{
         CalcularSubTotal() {
             var pcje_fnacion = 0.0;
-            var SubTotal = 0;
-            pcje_fnacion = this.PedDiasFnacionSel.pcje_fnacion;
-             if ( pcje_fnacion > 0 ) {
-               this.NuevoPedido.forEach((item) => {
-                    if ( pcje_fnacion < 1 ){
-                        item.vr_fnacion =  (item.vr_precio_lista/pcje_fnacion) - item.vr_precio_lista ;
-                      }else{
-                        item.vr_fnacion =  (item.vr_precio_lista*pcje_fnacion) - item.vr_precio_lista ;
-                      }
-               });
-             }
-
+            var SubTotal     = 0;
+            pcje_fnacion     = parseFloat(this.PedDiasFnacionSel.pcje_fnacion);
+            this.NuevoPedido.forEach((item) => {
+                  if ( pcje_fnacion == 0 ){
+                    item.vr_fnacion = 0;
+                  }
+                  if ( pcje_fnacion < 1 && pcje_fnacion != 0 ){
+                      item.vr_fnacion =  parseFloat(item.vr_precio_lista/pcje_fnacion) - parseFloat(item.vr_precio_lista) ;
+                    }
+                  if ( pcje_fnacion > 1){
+                      item.vr_fnacion =  parseFloat(item.vr_precio_lista*pcje_fnacion) - parseFloat(item.vr_precio_lista) ;
+                    }
+             });
             this.NuevoPedido.forEach((item) => {
                     SubTotal += parseFloat(item.cant * item.vr_precio_lista)   +
                                 ( parseFloat(item.vr_flete       * item.cant)) +        parseFloat(item.vr_fnacion * item.cant) +

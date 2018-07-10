@@ -64,7 +64,7 @@
 import Modals          from '../mixins/Modals';
 import FormValidation  from '../mixins/FormValidation';
   export default{
-      props :[ 'ModalClie'],
+      props :[ 'ModalClie', 'UrlBusqueda'],
 
       data(){
           return {
@@ -78,7 +78,7 @@ import FormValidation  from '../mixins/FormValidation';
       methods:{
          BuscarCliente(){
             let Me = this;
-            let Url  = '/clientes/buscar/' + '?filtro='+Me.TextoBsqda;
+            let Url  = this.UrlBusqueda + '?filtro='+Me.TextoBsqda;
             axios.get(Url)
             .then( response=>{
                this.ClientesEncontrados = response.data;
