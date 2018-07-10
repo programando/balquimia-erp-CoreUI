@@ -69,7 +69,7 @@ import FormValidation  from '../mixins/FormValidation';
       data(){
           return {
               ClientesEncontrados :[],
-              BuscarCliPor :'',
+              BuscarCliPor :'nom_sys',
               TextoBsqda :'',
           }
       },
