@@ -9,12 +9,16 @@ use App\Models\Menu as Menu;
 
 use Cache;
 use DB;
-use auth;
+use Auth;
+use Redirect;
 
 class DashBoardController extends Controller
 {
 
     public function Index(){
+      if ( Auth::guest() ){
+          return Redirect('/login');
+      }
       return view('dashboard.index');
     }
 
