@@ -14,11 +14,14 @@ use Redirect;
 
 class DashBoardController extends Controller
 {
+    public function __construct(){
+          $this->middleware('auth');
+    }
 
     public function Index(){
-      if ( Auth::guest() ){
+      /*if ( Auth::guest() ){
           return Redirect('/login');
-      }
+      }*/
       return view('dashboard.index');
     }
 

@@ -1,6 +1,6 @@
 <template>
    <div>
-        <div class="modal fade" data-backdrop="static" data-keyboard="false" :class="{'Modal-Show' : ModalClie}"
+        <div class="modal fade" data-backdrop="static" data-keyboard="false" :class="{'Modal-Show' : ModalPrd}"
                tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                <div class="modal-dialog modal-primary modal-lg" role="document">
                 <div class="modal-content">
@@ -18,8 +18,8 @@
                         <input v-model        ='TextoBsqda'
                         class          ="form-control col-md-9"
                         placeholder    ="Digite datos para filtrar la lista"
-                        @change="BuscarCliente()"
-                        @input="BuscarCliente()"
+                        @change="Buscarprducto()"
+                        @input="Buscarprducto()"
                         autofocus = "autofocus">
                       </div>
                       <br>
@@ -59,7 +59,7 @@
 import Modals          from '../mixins/Modals';
 import FormValidation  from '../mixins/FormValidation';
   export default{
-      props :[ 'ModalClie', 'UrlBusqueda'],
+      props :[ 'ModalPrd', 'UrlBusqueda'],
 
       data(){
           return {
@@ -71,7 +71,7 @@ import FormValidation  from '../mixins/FormValidation';
       mixins: [  Modals, FormValidation ],
 
       methods:{
-         BuscarCliente(){
+         Buscarprducto(){
             let Me = this;
             let Url  = this.UrlBusqueda + '?filtro='+Me.TextoBsqda;
             axios.get(Url)
@@ -86,7 +86,7 @@ import FormValidation  from '../mixins/FormValidation';
             this.ClientesEncontrados =[];
         },
         ModalClose(){
-          this.ModalClie=0;
+          this.ModalPrd=0;
         },
         ClearFields (){
 

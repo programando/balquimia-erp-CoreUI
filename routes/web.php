@@ -1,5 +1,5 @@
 <?php
- //Route::get('/clientes/buscarr','TercerosController@ClientesBusqueda' );
+Route::get('/test','ProductosController@ProductosBusqueda' );
 /** LOGIN */
 /*-----------------*/
 Route::get('login'  , 'LoginController@ShowLogin')->name('login.show');

@@ -14,9 +14,14 @@ $comment = $post->comments()->create([
     'message' => 'A new comment.',      Array
 ]);
 */
+
 class PedidosController extends Controller
 {
 
+   public function Test(){
+      $Hoy = Carbon::now();
+      dd( $Hoy->format('Y-m-d') );
+   }
     public function DiasFinanciacion(){
         $DiasFinanciacion   = DB::select(' call ped_dias_financiacion() ');
         return $DiasFinanciacion;
@@ -25,14 +30,14 @@ class PedidosController extends Controller
     public function Grabar( Request $FormData ){
       $this->validate($FormData ,
           ['id_terc_cli' => 'required|min:1', 'fcha_dspcho'=>'required']);
-
+          $fcha_dspcho = $this->VerificarFechaDespacho($FormData->fcha_dspcho );
     try{
           DB::beginTransaction();
             $Pedido  = new Pedido;
             $Pedido->id_terc_cli = $FormData->id_terc_cli;
             $Pedido->id_terc_usu = User()->id_terc;
             $Pedido->fcha_ped    = Carbon::now();
-            $Pedido->fcha_dspcho = Carbon::parse($FormData->fcha_dspcho);
+            $Pedido->fcha_dspcho = Carbon::parse($fcha_dspcho);
             $Pedido->id_stdo     = 0;
             $Pedido->save();
             $DetallePedido =  $FormData->get('detalle');
@@ -59,9 +64,14 @@ class PedidosController extends Controller
             DB::rollBack();
              return  '!OK' ;
         }
+    }// Grabar
 
-
+    private function VerificarFechaDespacho( $FechaDespacho ){
+        $FechaDespacho = Carbon::parse($FechaDespacho)->format('Y-m-d');
+        $Hoy           = Carbon::now()->format('Y-m-d');
+        if ( $FechaDespacho < $Hoy ){
+            $FechaDespacho = $Hoy;
+        }
+        return $FechaDespacho;
     }
-
-
 }
