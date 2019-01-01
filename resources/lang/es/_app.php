@@ -48,7 +48,7 @@ return [
          |--------------------------------------------------------------------------
          */
          'email_lbl'                  => 'Correo electrónico',
-         'passw_lbl'                  => 'Contrseña',
+         'passw_lbl'                  => 'Contraseña',
          'passw_lbl_confirma'         => 'Confirma tu contrseña',
 
 

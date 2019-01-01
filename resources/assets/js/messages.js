@@ -1,6 +1,4 @@
-/*
-    Defines the API route we are using.
-*/
+
 
 var Det_Null      ='No se han agregado registros para grabar. Corrija los datos e intente nuevamente.'
 var Det_Null_Tit  ='Sin Registros ';

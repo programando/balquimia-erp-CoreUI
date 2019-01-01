@@ -51032,7 +51032,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.devtools = true;
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
   routes: [{ component: __webpack_require__(171),
     name: 'inicio',
-    path: '/' }, { component: __webpack_require__(173),
+    path: '/inicio' }, { component: __webpack_require__(173),
     name: 'cargos',
     path: '/cargos' }, { component: __webpack_require__(177),
     name: 'medidas',
@@ -53797,7 +53797,7 @@ var staticRenderFns = [
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "text-value" }, [_vm._v("9.823")]),
+            _c("div", { staticClass: "text-value" }, [_vm._v("9.894423")]),
             _vm._v(" "),
             _c("div", [_vm._v("Members online")])
           ]),
@@ -54156,6 +54156,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 
 
@@ -54322,7 +54324,7 @@ var render = function() {
                             attrs: { type: "button", title: "Editar registro" },
                             on: {
                               click: function($event) {
-                                _vm.ModalOpen("Editar", Registro)
+                                "Editar", Registro
                               }
                             }
                           },
@@ -57749,11 +57751,11 @@ moment.locale('es');
             this.fcha_dspcho = '';
             this.PedVrSubtotal = 0;
             this.PedPcjeDscto = 0.00;
-            this.PedVrDscto = 0.0;
-            this.PedVrFletes = 0.0;
+            this.PedVrDscto = 0.00;
+            this.PedVrFletes = 0.00;
             this.PedPcjeIva = 0.00;
-            this.PedVrIva = 0.0;
-            this.PedVrTotPed = 0.0;
+            this.PedVrIva = 0.00;
+            this.PedVrTotPed = 0.00;
         }
     } // Methods
 
@@ -57766,9 +57768,7 @@ moment.locale('es');
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MSG; });
-/*
-    Defines the API route we are using.
-*/
+
 
 var Det_Null = 'No se han agregado registros para grabar. Corrija los datos e intente nuevamente.';
 var Det_Null_Tit = 'Sin Registros ';
@@ -65855,7 +65855,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['NotasVentas']
-
 });
 
 /***/ }),
@@ -66042,6 +66041,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -66145,7 +66145,7 @@ var render = function() {
                   _c("div", { staticClass: "col-sm-12" }, [
                     _c("label", [
                       _vm._v(
-                        "Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nomre Comercial"
+                        "Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nombre Comercial"
                       )
                     ]),
                     _vm._v(" "),

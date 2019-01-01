@@ -23,6 +23,7 @@
                 </div>
               </div>
             </main>
+
             @include('adminCoreUI.sidebar-right.container')
           </div>
       {{--  @include('adminCoreUI.footer.container')  --}}

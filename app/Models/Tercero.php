@@ -52,72 +52,71 @@ class Tercero extends Model
     'nom_vend_fact',           'pje_comis',          'listados',              'file_firma',         'revisado'
   ];
 
-/*
-  $beneficiarios = Departamento::whereHas('municipio', function($q) {
-      $q->where('departamento_id', Input::get('depto'));
-  })
-  ->with(['corregimiento', 'barrio', 'beneficiario'])
-  ->get();
-*/
+
+         /*//////////////////////////////////////
+              RELACIONES
+         *//////////////////////////////////////
+        public function Cargo(){
+          return $this->belongsTo(\App\Models\MstroCargo::class, 'id_cargo');
+        }
+
+        public function ClaseEmpleadoPyg() {
+          return $this->belongsTo(\App\Models\MstroNominaPygClase::class, 'id_cls_pyg');
+        }
+
+        public function Linea()  {
+          return $this->belongsTo(\App\Models\MstroLinea::class, 'id_linea_vend');
+        }
+
+        public function ZonaVentas()  {
+          return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_zn_vta');
+        }
+
+          public function Municipio()  {
+          return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_mcpio');
+        }
+
+        public function NivelRiesgo()  {
+          return $this->belongsTo(\App\Models\MstroNvsRiesgo::class, 'id_nv_rsgo');
+        }
+
+        public function SubLinea()  {
+          return $this->belongsTo(\App\Models\MstroLineasSubLinea::class, 'id_sub_linea_cli');
+        }
+
+        public function TipoDocumento()  {
+          return $this->belongsTo(\App\Models\MstroTpsDoc::class, 'id_tp_doc');
+        }
+
+        public function Contactos()  {
+          return $this->hasMany(\App\Models\TercerosContacto::class, 'id_terc');
+        }
+
+        public function Notas()  {
+          return $this->hasMany(\App\Models\TercerosNota::class, 'id_terc');
+        }
+
+        public function Usuario()  {
+          return $this->hasOne(\App\Models\TercerosUser::class, 'id_terc');
+        }
+
+        public function Facturas()
+        {
+          return $this->hasMany(\App\Models\Factura::class, 'id_terc_cli','id_terc');
+        }
+
+        public function FactDtVendedor()
+        {
+          return $this->hasMany(\App\Models\FacturasDt::class, 'id_terc_vend');
+        }
 
 
-  public function Cargo(){
-    return $this->belongsTo(\App\Models\MstroCargo::class, 'id_cargo');
-  }
-
-  public function ClaseEmpleadoPyg() {
-    return $this->belongsTo(\App\Models\MstroNominaPygClase::class, 'id_cls_pyg');
-  }
-
-  public function Linea()  {
-    return $this->belongsTo(\App\Models\MstroLinea::class, 'id_linea_vend');
-  }
-
-  public function ZonaVentas()  {
-    return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_zn_vta');
-  }
-
-    public function Municipio()  {
-    return $this->belongsTo(\App\Models\MstroMunicipio::class, 'id_mcpio');
-  }
-
-  public function NivelRiesgo()  {
-    return $this->belongsTo(\App\Models\MstroNvsRiesgo::class, 'id_nv_rsgo');
-  }
-
-  public function SubLinea()  {
-    return $this->belongsTo(\App\Models\MstroLineasSubLinea::class, 'id_sub_linea_cli');
-  }
-
-  public function TipoDocumento()  {
-    return $this->belongsTo(\App\Models\MstroTpsDoc::class, 'id_tp_doc');
-  }
-
-  public function Contactos()  {
-    return $this->hasMany(\App\Models\TercerosContacto::class, 'id_terc');
-  }
-
-  public function Notas()  {
-    return $this->hasMany(\App\Models\TercerosNota::class, 'id_terc');
-  }
-
-  public function Usuario()  {
-    return $this->hasOne(\App\Models\TercerosUser::class, 'id_terc');
-  }
-
-
-
-  public function Facturas()
-  {
-    return $this->hasMany(\App\Models\Factura::class, 'id_terc_cli','id_terc');
-  }
-
-  public function FactDtVendedor()
-  {
-    return $this->hasMany(\App\Models\FacturasDt::class, 'id_terc_vend');
-  }
-
-
+       /*//////////////////////////////////////
+            SCOPES
+       *//////////////////////////////////////
+       public function scopeClientes($query){
+            return $query->where('cliente','=','1');
+        }
 
 
 

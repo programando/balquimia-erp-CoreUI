@@ -23,7 +23,7 @@
                     <span v-if="Registro.inactivo" class="badge badge-danger">Inactivo</span>
                   </td>
                   <td class="text-center">
-                    <button type="button" class="btn btn-success btn-sm"  @click="ModalOpen('Editar', Registro)"  title="Editar registro">
+                    <button type="button" class="btn btn-success btn-sm"  @click="('Editar', Registro)"  title="Editar registro">
                       <i class="fa  fa-pencil" ></i>
                     </button>
                     <button type="button" class="btn btn-danger btn-sm"  @click="BorrarShowModal(Registro)" title="Eliminar registro">
@@ -51,6 +51,7 @@
                 </button>
               </div>
               <div class="modal-body">
+
                 <form action="" method="post" enctype="multipart/form-data" @keydown="ErrorsClear($event.target.name)">
                     <label>Nombre/Descripción del Cargo :</label>
                       <input type="text" class="form-control" :class = "{ 'is-invalid': ErrorHas('nom_cargo')}"
@@ -73,6 +74,7 @@
                     </div>
                       <input type="hidden" v-model="id_cargo">
                 </form>
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal" @click="ModalClose()">Cerrar</button>
@@ -199,5 +201,3 @@
 
     };
 </script>
-
-

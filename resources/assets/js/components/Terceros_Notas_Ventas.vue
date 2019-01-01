@@ -28,7 +28,5 @@
 
   export default{
       props :['NotasVentas'],
-
-
   };
 </script>

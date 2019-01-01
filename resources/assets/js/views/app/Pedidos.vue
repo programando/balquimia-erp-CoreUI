@@ -330,6 +330,7 @@ moment.locale('es');
                       item.vr_fnacion =  parseFloat(item.vr_precio_lista*pcje_fnacion) - parseFloat(item.vr_precio_lista) ;
                     }
              });
+             
             this.NuevoPedido.forEach((item) => {
                     SubTotal += parseFloat(item.cant * item.vr_precio_lista)   +
                                 ( parseFloat(item.vr_flete       * item.cant)) +        parseFloat(item.vr_fnacion * item.cant) +
@@ -531,11 +532,11 @@ moment.locale('es');
               this.fcha_dspcho         = '';
               this.PedVrSubtotal       = 0;
               this.PedPcjeDscto        = 0.00;
-              this.PedVrDscto          = 0.0;
-              this.PedVrFletes         = 0.0;
+              this.PedVrDscto          = 0.00;
+              this.PedVrFletes         = 0.00;
               this.PedPcjeIva          = 0.00;
-              this.PedVrIva            = 0.0;
-              this.PedVrTotPed         = 0.0;
+              this.PedVrIva            = 0.00;
+              this.PedVrTotPed         = 0.00;
           }
 
     },// Methods

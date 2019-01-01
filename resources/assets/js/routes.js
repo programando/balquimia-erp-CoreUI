@@ -9,7 +9,7 @@ export default new Router({
    routes : [
         { component : require('./views/maestros/Dashboard'),
           name      : 'inicio',
-          path      : '/'     },
+          path      : '/inicio'     },
 
         { component : require('./views/maestros/Cargos'),
           name      : 'cargos',

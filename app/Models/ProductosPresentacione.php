@@ -75,34 +75,40 @@ class ProductosPresentacione extends Model
     'tags_bsqda',
     'inactivo'
   ];
+       /*//////////////////////////////////////
+            RELACIONES
+       *//////////////////////////////////////
+        public function GrupoComision()  {
+          return $this->belongsTo(\App\Models\MstroComisionesPrd::class, 'id_comis');
+        }
 
-  public function GrupoComision()
-  {
-    return $this->belongsTo(\App\Models\MstroComisionesPrd::class, 'id_comis');
-  }
+        public function Linea()  {
+          return $this->belongsTo(\App\Models\MstroLinea::class, 'id_linea');
+        }
 
-  public function Linea()
-  {
-    return $this->belongsTo(\App\Models\MstroLinea::class, 'id_linea');
-  }
+        public function Marca()  {
+          return $this->belongsTo(\App\Models\MstroMarca::class, 'id_marca');
+        }
 
-  public function Marca()
-  {
-    return $this->belongsTo(\App\Models\MstroMarca::class, 'id_marca');
-  }
+        public function ProductoPpal()  {
+          return $this->belongsTo(\App\Models\Producto::class, 'id_prd_ppal');
+        }
 
-  public function ProductoPpal()
-  {
-    return $this->belongsTo(\App\Models\Producto::class, 'id_prd_ppal');
-  }
+        public function Presentaciones()  {
+          return $this->belongsTo(\App\Models\MstroPresentacione::class, 'id_present');
+        }
 
-  public function Presentaciones()
-  {
-    return $this->belongsTo(\App\Models\MstroPresentacione::class, 'id_present');
-  }
+        public function FacturasDt()  {
+          return $this->hasMany(\App\Models\FacturasDt::class, 'id_prd');
+        }
+           /*//////////////////////////////////////
+                SCOPES
+           *//////////////////////////////////////
+      public function scopeProductosActivos($query){
+         return $query->where('inactivo','=','1');
+      }
 
-  public function FacturasDt()
-  {
-    return $this->hasMany(\App\Models\FacturasDt::class, 'id_prd');
-  }
+      public function scopeProductosConPrecio($query){
+         return $query->where('vr_precio_lista', '>','0');
+      }
 }

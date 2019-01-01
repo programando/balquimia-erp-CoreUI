@@ -12,8 +12,9 @@
                   </div>
                   <div class="modal-body">
                    <div class="row">
+
                      <div class="col-sm-12">
-                      <label>Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nomre Comercial</label>
+                      <label>Puede realizar la búsqueda por: Nombre/Razón social, Nit, Sucursal, Nombre Comercial</label>
                       <div class="input-group">
                         <input v-model        ='TextoBsqda'
                         class          ="form-control col-md-9"

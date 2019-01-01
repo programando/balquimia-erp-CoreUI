@@ -1,6 +1,5 @@
 let mix = require('laravel-mix');
 
-
    mix.js(['resources/assets/js/app.js',
         ], 'public/js/Vue-App.js' );
 
@@ -12,7 +11,6 @@ let mix = require('laravel-mix');
         'resources/assets/css/vendor/toastr.css',
         'resources/assets/css/app.css',
        ], 'public/css/app.css') ;     // Archivo de salida CSS
-
 
     mix.browserSync({
       proxy: 'http://balquimia-erp-CoreUI.local',

@@ -23,12 +23,12 @@ class TercerosController extends Controller {
     public function ClientesBusqueda(Request $FormData ){
         $Filtro =  $FormData->filtro;
         if ( !$Filtro ){
-                      $Clientes = Terceros::where('cliente','=','1')
+                      $Clientes = Terceros::Clientes()
                     ->select('nro_identif','id_terc','nom_sys','nom_suc')
                     ->orderBy('nom_sys')->take(10)->get();
         }else {
-          $Clientes = Terceros::where('cliente','=','1')
-                      ->where('nom_sys','like', '%'.$Filtro .'%')
+          $Clientes = Terceros::Clientes()
+                      ->Where('nom_sys','like', '%'.$Filtro .'%')
                       ->orWhere('nom_suc','like', '%'.$Filtro .'%')
                       ->orWhere('nro_identif','like', '%'.$Filtro .'%')
                       ->select('nro_identif','id_terc','nom_sys','nom_suc')
@@ -49,9 +49,7 @@ class TercerosController extends Controller {
         $id_terc = $FormData->id_terc;
         $Ventas  = DB::select(' call clientes_productos_comprados (?)', array($id_terc));
         $Ventas  = collect($Ventas);
-
-
-        return $Ventas;
+         return $Ventas;
     }
 
     public function NotasVenta ( Request $FormData ){
@@ -77,16 +75,5 @@ class TercerosController extends Controller {
 
     }
 
-
-/*
-        $filtro = $request->filtro;
-        $proveedores = Proveedor::join('personas','proveedores.id','=','personas.id')
-        ->where('personas.nombre', 'like', '%'. $filtro . '%')
-        ->orWhere('personas.num_documento', 'like', '%'. $filtro . '%')
-        ->select('personas.id','personas.nombre','personas.num_documento')
-        ->orderBy('personas.nombre', 'asc')->get();
-
-        return ['proveedores' => $proveedores];
-        */
 
 }

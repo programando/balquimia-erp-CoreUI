@@ -14,7 +14,6 @@ import Vue              from 'vue';
 import router           from './routes';
 import VueSweetalert2   from 'vue-sweetalert2';
 
-
 Vue.component('pagination-links'                ,require( './components/PaginationLinks' ));
 Vue.component('sublineas'                       ,require( './components/LineasSubLineas' ));
 Vue.component('select2'                         ,require( './components/Ctrl_SelectMultiple' ));
